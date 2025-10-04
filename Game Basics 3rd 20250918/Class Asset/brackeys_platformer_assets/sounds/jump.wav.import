@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fn45fvmaetxr"
+path="res://.godot/imported/jump.wav-f0319d451b2f3a3f15c39b6eb6f8a75b.sample"
+
+[deps]
+
+source_file="res://Class Asset/brackeys_platformer_assets/sounds/jump.wav"
+dest_files=["res://.godot/imported/jump.wav-f0319d451b2f3a3f15c39b6eb6f8a75b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

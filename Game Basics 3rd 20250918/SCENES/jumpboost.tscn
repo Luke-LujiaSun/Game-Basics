@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ic020ern7xy0"]
+
+[ext_resource type="Texture2D" uid="uid://qy4sejvwd5bm" path="res://Class Asset/Free/Traps/Fan/Off.png" id="1_vs83e"]
+[ext_resource type="Script" uid="uid://t5ktr5chlv5l" path="res://SCENES/area_2d.gd" id="2_vs83e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_carjx"]
+size = Vector2(25, 10)
+
+[node name="Jumpboost" type="Sprite2D"]
+texture = ExtResource("1_vs83e")
+region_rect = Rect2(0, 49.40422, 14.859833, 14.595779)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("2_vs83e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_carjx")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
