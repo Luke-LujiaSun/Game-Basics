@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6xjwc74cdcxa"]
+
+[ext_resource type="Script" uid="uid://ohrmisb2yp5c" path="res://SCENES/sea.tres.gd" id="1_gufoy"]
+
+[node name="Sea_Slowdown" type="Area2D"]
+script = ExtResource("1_gufoy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

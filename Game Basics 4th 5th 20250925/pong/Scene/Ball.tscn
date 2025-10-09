@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://sapysyxqxde5"]
+
+[ext_resource type="Texture2D" uid="uid://bnosgb16vobx" path="res://Asset/PongPD Assets/Images/ball.png" id="1_l1ced"]
+
+[sub_resource type="GDScript" id="GDScript_l1ced"]
+script/source = "extends CharacterBody2D
+
+var speed = 1000
+var direction = Vector2(1, 1)  # Starting direction
+
+func _ready():
+	velocity = direction.normalized() * speed
+
+func _physics_process(delta):
+	var collision = move_and_collide(velocity * delta)
+	
+	if collision:
+		velocity = velocity.bounce(collision.get_normal())
+		velocity = velocity.normalized() * speed  # This line keeps it fast!
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1ced"]
+
+[node name="RigidBody2D" type="CharacterBody2D"]
+script = SubResource("GDScript_l1ced")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_l1ced")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l1ced")

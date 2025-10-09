@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8dllbufqdv12"]
+
+[ext_resource type="Texture2D" uid="uid://c48r5xmrm3lkn" path="res://Asset/PongPD Assets/Images/paddle.png" id="1_8pdit"]
+[ext_resource type="Script" uid="uid://dxqsx8d88617e" path="res://Scene/Paddle_2.tres.gd" id="1_vyy3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7m4e"]
+size = Vector2(6, 30)
+
+[node name="Sprite2D" type="StaticBody2D"]
+rotation = 1.5707964
+scale = Vector2(2, 3.5)
+script = ExtResource("1_vyy3h")
+
+[node name="CharacterBody2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8pdit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n7m4e")

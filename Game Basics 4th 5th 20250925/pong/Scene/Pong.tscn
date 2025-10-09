@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg50qrd4y16yb"]
+
+[ext_resource type="Texture2D" uid="uid://e2upivgaunvn" path="res://Asset/PongPD Assets/Images/background.png" id="1_jde1k"]
+[ext_resource type="PackedScene" uid="uid://68lho1q7x1u6" path="res://Scene/Paddle.tscn" id="2_1y62r"]
+[ext_resource type="PackedScene" uid="uid://b8dllbufqdv12" path="res://Scene/Paddle_2.tscn" id="3_05c4v"]
+[ext_resource type="PackedScene" uid="uid://sapysyxqxde5" path="res://Scene/Ball.tscn" id="4_vb62k"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jde1k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Arena" type="Sprite2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(3.0416663, 3.0416667)
+texture = ExtResource("1_jde1k")
+
+[node name="Camera2D" type="Camera2D" parent="Arena"]
+
+[node name="Boundary" type="Node2D" parent="."]
+position = Vector2(0, 574)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
+position = Vector2(0, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_jde1k")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary"]
+position = Vector2(0, -1180)
+rotation = 3.1415927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_jde1k")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary"]
+position = Vector2(-365, -574)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_jde1k")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary"]
+position = Vector2(365, -574)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_jde1k")
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_1y62r")]
+position = Vector2(0, 593)
+
+[node name="Sprite2D2" parent="." instance=ExtResource("3_05c4v")]
+position = Vector2(-4.7683716e-07, -592)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("4_vb62k")]
+position = Vector2(-2, 0)
