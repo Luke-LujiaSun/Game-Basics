@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq12b27eshfwe"]
+
+[ext_resource type="Texture2D" uid="uid://c40vb64ap6vh7" path="res://Assets/o.png" id="1_ekcco"]
+[ext_resource type="Texture2D" uid="uid://dgp0krn3xjc04" path="res://Assets/x.png" id="2_uv86m"]
+
+[sub_resource type="GDScript" id="GDScript_djvo2"]
+script/source = "extends TextureRect
+
+# add this interface of circle/X sign texture to godot inspector
+@export var texture_circle: Texture2D
+@export var texture_x: Texture2D
+
+var parent = get_parent()
+
+func _on_gui_input(event: InputEvent) -> void:
+	if InputEventMouseButton and event.is_pressed():
+		if parent.status_of_circle == false:
+			Add_circle()
+			print(parent.status_of_circle)
+		else:
+			Add_x()
+		print(\"1\")
+		print(parent.status_of_circle)
+	pass 
+
+func Add_circle():
+	texture = texture_circle
+	parent.status_of_circle = true
+	pass
+
+func Add_x():
+	texture = texture_x
+	parent.status_of_circle = false
+	pass
+"
+
+[node name="Mouse_Click" type="TextureRect"]
+self_modulate = Color(18.892157, 1.8307362, 1.8307362, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource("GDScript_djvo2")
+texture_circle = ExtResource("1_ekcco")
+texture_x = ExtResource("2_uv86m")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

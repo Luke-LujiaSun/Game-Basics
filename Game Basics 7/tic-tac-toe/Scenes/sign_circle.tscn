@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd3aeailcqyrb"]
+
+[ext_resource type="Texture2D" uid="uid://c40vb64ap6vh7" path="res://Assets/o.png" id="1_v4nj8"]
+
+[node name="Sign_Circle" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_v4nj8")
+stretch_mode = 5

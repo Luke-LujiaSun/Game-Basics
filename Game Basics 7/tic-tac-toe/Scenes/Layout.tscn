@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://cks4x4yo5gaua"]
+
+[ext_resource type="Texture2D" uid="uid://i350p54u8emf" path="res://Assets/board.png" id="1_7blk1"]
+[ext_resource type="PackedScene" uid="uid://dq12b27eshfwe" path="res://Scenes/mouse_click.tscn" id="2_blrad"]
+
+[sub_resource type="GDScript" id="GDScript_blrad"]
+script/source = "extends PanelContainer
+
+var status_of_circle: bool = false
+"
+
+[node name="Node" type="Node"]
+
+[node name="Layout" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = SubResource("GDScript_blrad")
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="TextureRect" type="TextureRect" parent="Layout/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_7blk1")
+
+[node name="GridContainer" type="GridContainer" parent="Layout/MarginContainer/TextureRect"]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Mouse_Click" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click2" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click3" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click4" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click5" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click6" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click7" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click8" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
+
+[node name="Mouse_Click9" parent="Layout/MarginContainer/TextureRect/GridContainer" instance=ExtResource("2_blrad")]
+layout_mode = 2
