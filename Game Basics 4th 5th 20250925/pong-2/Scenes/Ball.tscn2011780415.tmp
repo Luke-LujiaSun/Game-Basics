@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://kgi4s0i8b3te"]
+
+[ext_resource type="Texture2D" uid="uid://bnosgb16vobx" path="res://PongPD Assets/Images/ball.png" id="1_7nh6h"]
+[ext_resource type="Script" uid="uid://dsxfutxuealbu" path="res://Scripts/Ball.tres.gd" id="1_eb1ap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb1ap"]
+radius = 3.0103986
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nh6h"]
+size = Vector2(26, 26)
+
+[node name="ball" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_eb1ap")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_7nh6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_eb1ap")
+
+[node name="ball_bounce_detect" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball_bounce_detect"]
+shape = SubResource("RectangleShape2D_7nh6h")
+
+[connection signal="body_entered" from="ball_bounce_detect" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://kgi4s0i8b3te"]
+
+[ext_resource type="Texture2D" uid="uid://bnosgb16vobx" path="res://PongPD Assets/Images/ball.png" id="1_7nh6h"]
+[ext_resource type="Script" uid="uid://dsxfutxuealbu" path="res://Scripts/Ball.tres.gd" id="1_eb1ap"]
+[ext_resource type="AudioStream" uid="uid://fn45fvmaetxr" path="res://sounds/jump.wav" id="3_27lt3"]
+[ext_resource type="AudioStream" uid="uid://ci5ifx03fk206" path="res://sounds/tap.wav" id="4_3dh43"]
+[ext_resource type="AudioStream" uid="uid://cnhvxubooiv7p" path="res://sounds/coin.wav" id="5_o2oe4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb1ap"]
+radius = 3.0103986
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nh6h"]
+size = Vector2(26, 26)
+
+[node name="ball" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_eb1ap")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_7nh6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_eb1ap")
+
+[node name="ball_bounce_detect" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball_bounce_detect"]
+shape = SubResource("RectangleShape2D_7nh6h")
+
+[node name="se_ball" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_27lt3")
+bus = &"se_ball"
+
+[node name="se_wall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3dh43")
+bus = &"se_wall"
+
+[node name="se_score" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_o2oe4")
+bus = &"se_score"
+
+[connection signal="area_entered" from="ball_bounce_detect" to="." method="_on_ball_bounce_detect_area_entered"]
+[connection signal="body_entered" from="ball_bounce_detect" to="." method="_on_area_2d_body_entered"]

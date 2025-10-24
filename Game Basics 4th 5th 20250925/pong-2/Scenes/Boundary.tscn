@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctblfn8dup4bb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t5qyx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t5qyx"]
+
+[node name="boundary" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_t5qyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_t5qyx")

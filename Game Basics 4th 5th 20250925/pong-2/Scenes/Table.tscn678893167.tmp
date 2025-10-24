@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3fl2tnui3we7"]
+
+[ext_resource type="PackedScene" uid="uid://bd0t2ecef1g52" path="res://Scenes/Paddle.tscn" id="1_5ervl"]
+[ext_resource type="Texture2D" uid="uid://e2upivgaunvn" path="res://PongPD Assets/Images/background.png" id="1_ab3gw"]
+[ext_resource type="PackedScene" uid="uid://d1m1ehsf5akhu" path="res://Scenes/Paddle2.tscn" id="3_2kndx"]
+[ext_resource type="PackedScene" uid="uid://ctblfn8dup4bb" path="res://Scenes/Boundary.tscn" id="3_rv2kk"]
+[ext_resource type="PackedScene" uid="uid://kgi4s0i8b3te" path="res://Scenes/Ball.tscn" id="4_rv2kk"]
+[ext_resource type="PackedScene" uid="uid://cb6oawuhgyg28" path="res://Scenes/Respawn_Area.tscn" id="6_oeoac"]
+[ext_resource type="Script" uid="uid://bjvetwyghjqkt" path="res://Scripts/Score.tres.gd" id="7_gf7yt"]
+[ext_resource type="FontFile" uid="uid://bhkxon6wvgi54" path="res://fonts/PixelOperator8-Bold.ttf" id="8_n8uo3"]
+
+[node name="table" type="Node2D"]
+
+[node name="table_visual" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+rotation = 1.5707964
+scale = Vector2(3, 2.5)
+texture = ExtResource("1_ab3gw")
+region_rect = Rect2(0, 0, 5600, 240)
+
+[node name="player_paddles" type="Node2D" parent="."]
+
+[node name="paddle" parent="player_paddles" instance=ExtResource("1_5ervl")]
+position = Vector2(960, 1060)
+rotation = 1.5707964
+scale = Vector2(2, 3)
+
+[node name="paddle2" parent="player_paddles" instance=ExtResource("3_2kndx")]
+position = Vector2(960, 20)
+rotation = 1.5707964
+scale = Vector2(2, 2.996335)
+
+[node name="boundary" type="Node2D" parent="."]
+
+[node name="boundary_left" parent="boundary" instance=ExtResource("3_rv2kk")]
+position = Vector2(659, 540)
+rotation = 1.5707964
+
+[node name="boundary_right" parent="boundary" instance=ExtResource("3_rv2kk")]
+position = Vector2(1260, 540)
+rotation = -1.5707964
+
+[node name="respawn_area" type="Node2D" parent="."]
+position = Vector2(960, 1150)
+scale = Vector2(30, 1)
+
+[node name="respawn_area_down" parent="respawn_area" instance=ExtResource("6_oeoac")]
+
+[node name="respawn_area_up" parent="respawn_area" instance=ExtResource("6_oeoac")]
+position = Vector2(0, -1162)
+
+[node name="ball" parent="." instance=ExtResource("4_rv2kk")]
+position = Vector2(960, 540)
+
+[node name="Score" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 846.0
+offset_top = 496.0
+offset_right = 846.0
+offset_bottom = 496.0
+script = ExtResource("7_gf7yt")
+
+[node name="GridContainer" type="GridContainer" parent="Score"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 16.0
+columns = 3
+
+[node name="score_label_p1" type="Label" parent="Score/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n8uo3")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="label" type="Label" parent="Score/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n8uo3")
+theme_override_font_sizes/font_size = 80
+text = ":"
+
+[node name="score_label_p2" type="Label" parent="Score/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n8uo3")
+theme_override_font_sizes/font_size = 80
+text = "0"
